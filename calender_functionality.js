@@ -33,13 +33,27 @@ function getCalendarDates() {
 
 // Returning Calender Grid Header
 function getGridItemHeader(i) {
-  var calenderHeader = `<div class=\"thead\" title=\"${
+  var calenderHeader = `<div class=\"thead tDateHeader\" title=\"${
     dateList[i - 1].dayNumber
   }\"><p>${dateList[i - 1].weekDayName}</p><p>${
     dateList[i - 1].currentDate
   }</p></div>`;
 
   return calenderHeader;
+}
+
+function updateHeader() {
+  var headerGridItems = document.querySelectorAll(".tDateHeader");
+  var options = { day: "2-digit", month: "short" };
+  var currentDate = $("#datepicker").datepicker("getDate")
+    ? $("#datepicker")
+        .datepicker("getDate")
+        .toLocaleDateString("en-US", options)
+    : new Date().toLocaleDateString("en-US", options);
+
+  headerGridItems.forEach((item) => {
+    item.children[1].innerHTML = currentDate;
+  });
 }
 
 // Creating vehicle list

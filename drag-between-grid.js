@@ -16,7 +16,10 @@ function droppedOn(event) {
   console.log(event.target.id);
   droppedContId = event.target.id;
   draggableId = null;
-  document.getElementById(droppedContId).appendChild(droppedElement);
+  if (droppedElement) {
+    document.getElementById(droppedContId).appendChild(droppedElement);
+  }
+
   droppedContId = null;
   droppedElement = null;
 }
