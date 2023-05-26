@@ -14,6 +14,15 @@
     <title>Roadstar</title>
   </head>
   <body class="body" onload="getCalender()">
+    <script>
+      function drop() {
+        console.log("drop called");
+      }
+
+      function allowDrop(event) {
+        event.preventDefault();
+      }
+    </script>
     <div class="main">
       <div class="header">
         <div class="h-name">
@@ -146,5 +155,6 @@
     <script src="./calender_functionality.js"></script>
     <script src="./drag.js"></script>
     <script src="./datepicker-setup.js"></script>
+    <script src="./drag-between-grid.js"></script>
   </body>
 </html>

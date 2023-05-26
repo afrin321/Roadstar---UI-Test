@@ -1,6 +1,7 @@
 $(function () {
   var droppableElement = $("#calenderGridContainer");
   var draggedDate = null;
+  var isFromCalendar = false;
 
   // Add event listener for mousedown event on the Datepicker input
   $("#datepicker").on("mousedown", function (event) {
@@ -14,6 +15,9 @@ $(function () {
         event.target.classList.contains("ui-state-default")
       ) {
         var day = $(event.target).text();
+        draggedItemClass = event.target.classList;
+        isFromCalendar = true;
+        console.log("draggedItemClass: " + draggedItemClass);
         console.log("day: " + day);
         //var month = $("#datepicker")
         //  .datepicker("getDate")
@@ -46,22 +50,22 @@ $(function () {
   // Add event listener for drop event on the droppable element
   droppableElement.on("drop", function (event) {
     event.preventDefault(); // Prevent default behavior
-    var droppedElementId = event.target.id;
-    console.log("Dropped on:", droppedElementId);
-    console.log("Dropped on:", droppedElementId.split(" ")[1]);
-    var cat_for_id = droppedElementId.split("#")[0];
-    var calculatedDroppedId = `${cat_for_id}#${draggedDate}`;
-    console.log(calculatedDroppedId);
+    if (isFromCalendar) {
+      var droppedElementId = event.target.id;
+      var cat_for_id = droppedElementId.split("#")[0];
+      var calculatedDroppedId = `${cat_for_id}#${draggedDate}`;
 
-    document.getElementById(calculatedDroppedId).innerHTML =
-      getAppointmentDiv(calculatedDroppedId);
+      document.getElementById(calculatedDroppedId).innerHTML =
+        getAppointmentDiv(calculatedDroppedId);
+      isFromCalendar = false;
+    }
   });
 });
 
 function getAppointmentDiv(id) {
   var apId = `ap#${id}`;
-  var appointmentDiv = `<div class=\"appointment-div request\" id=\"${apId}\">
-    <div class=\"ap-div-c-1\">
+  var appointmentDiv = `<div ondragover=\"dragOver(event)\" ondragstart=\"dragStart(event)\" ondragend=\"onDragEnd(event)\" draggable=\"true\" class=\"draggable appointment-div  request\" id=\"${apId}\">
+    <div class=\"grab ap-div-c-1 \">
         <div>
             <img src=\".\/image\/info.svg\" />
             <label>Request</label>
