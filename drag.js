@@ -14,12 +14,13 @@ $(function () {
         event.target.classList.contains("ui-state-default")
       ) {
         var day = $(event.target).text();
-        var month = $("#datepicker")
-          .datepicker("getDate")
-          .toLocaleString("default", { month: "short" });
+        console.log("day: " + day);
+        //var month = $("#datepicker")
+        //  .datepicker("getDate")
+        //  .toLocaleString("default", { month: "short" });
         draggedDate = calculateMonth(day); //month + " " + day;
         console.log("Dragging date:", draggedDate);
-        calculateMonth(day);
+        //calculateMonth(day);
       }
     });
 
@@ -78,12 +79,16 @@ function calculateMonth(day) {
   var m = document.getElementById("selectedMonth");
   var month;
   if (m && m.value) {
-    month = new Date((year = 2023), (month = m.value - 1), (day = day));
+    month = new Date(2023, (month = m.value - 1), day);
+    day = month.toLocaleString("default", { day: "2-digit" });
+    month = month.toLocaleString("default", { month: "short" });
+    console.log("changed month: " + month + " " + day);
+    return month + " " + day;
   } else {
-    month = $("#datepicker").datepicker("getDate");
+    var month = $("#datepicker")
+      .datepicker("getDate")
+      .toLocaleString("default", { month: "short" });
+
+    return month + " " + day;
   }
-  day = month.toLocaleString("default", { day: "2-digit" });
-  month = month.toLocaleString("default", { month: "short" });
-  console.log("changed month: " + month + " " + day);
-  return month + " " + day;
 }
