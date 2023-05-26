@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="./index.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+    <title>Roadstar</title>
+  </head>
+  <body class="body" onload="getCalender()">
+    <div class="main">
+      <div class="header">
+        <div class="h-name">
+          <div>Calendar</div>
+          <div class="side-bar-toggle" id="toggleSidebar">
+            <img
+              id="sidebarImg"
+              src="./image/previous.png"
+              style="width: 20px; height: 20px"
+            />
+          </div>
+        </div>
+        <div class="h-type">
+          <div>
+            <span
+              ><i style="color: #666666" class="h-types">&#9679;</i
+              ><label>Request</label></span
+            >
+            <span
+              ><i style="color: #7b57dd" class="h-types">&#9679;</i
+              ><label>Reserved</label></span
+            >
+            <span
+              ><i style="color: #ffc02a" class="h-types">&#9679;</i
+              ><label>Rented</label></span
+            >
+            <span
+              ><i style="color: #33c16b" class="h-types">&#9679;</i
+              ><label>Completed</label></span
+            >
+            <span
+              ><i style="color: red" class="h-types">&#9679;</i
+              ><label>Cancelled</label></span
+            >
+          </div>
+        </div>
+        <div class="h-actions">
+          <button>Create</button>
+          <div>
+            <span id="toggleFilter"
+              ><img style="width: 20px; height: 20px" src="./image/filter.png"
+            /></span>
+            <span id="zoomIn"
+              ><img style="width: 20px; height: 20px" src="./image/zoom-in.png"
+            /></span>
+            <span id="zoomOut"
+              ><img
+                style="width: 20px; height: 20px"
+                src="./image/zoom-out.png"
+            /></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="calendar-card">
+        <div class="side-bar" id="sidebar">
+          <div type="text" id="datepicker"></div>
+          <div>
+            <h3 style="color: gray">Appointments</h3>
+            <div class="appointment">
+              <label>10:30 AM</label>
+              <p><span>Pickup</span><br /><span>Savannah Nigyuen</span></p>
+            </div>
+            <div class="appointment">
+              <label>10:40 AM</label>
+              <p><span>Pickup</span><br /><span>Savannah Nigyuen</span></p>
+            </div>
+            <div class="appointment">
+              <label>10:50 AM</label>
+              <p><span>Pickup</span><br /><span>Savannah Nigyuen</span></p>
+            </div>
+            <div class="appointment">
+              <label>11:40 AM</label>
+              <p><span>Pickup</span><br /><span>Savannah Nigyuen</span></p>
+            </div>
+            <div class="appointment">
+              <label>01:00 AM</label>
+              <p><span>Pickup</span><br /><span>Savannah Nigyuen</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="right-container">
+          <div class="filter" id="filter">
+            <div>
+              <p>
+                <label>Keyword Search</label>
+                <br />
+                <input type="text" placeholder="Keyword or Number" />
+              </p>
+              <p>
+                <br />
+                <select>
+                  <option value="">All fields</option>
+                  <option value="">Customer Name</option>
+                  <option value="">Company Name</option>
+                  <option value="">Plate Number</option>
+                  <option value="">Pickup Location</option>
+                  <option value="">Return Location</option>
+                </select>
+              </p>
+
+              <p>
+                <label>Vehicle</label>
+                <br />
+                <select>
+                  <option value="">All</option>
+                </select>
+              </p>
+              <p>
+                <label>Status</label>
+                <br />
+                <select>
+                  <option value="">All</option>
+                </select>
+              </p>
+            </div>
+            <div>
+              <button class="cancel-btn">Cancel</button>
+              <button class="apply-btn">Apply</button>
+            </div>
+          </div>
+          <div class="scrollable" id="scrollable">
+            <div class="calendar w-100" id="calenderGridContainer"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <input type="hidden" value="" id="selectedMonth" />
+    <script src="./index.js"></script>
+    <script src="./calender_functionality.js"></script>
+    <script src="./drag.js"></script>
+    <script src="./datepicker-setup.js"></script>
+  </body>
+</html>
