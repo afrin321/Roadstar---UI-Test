@@ -10,7 +10,7 @@ $(function () {
     maxDate: 12,
     onSelect: function (dateText, inst) {
       selectedDate = new Date(dateText);
-      getCalender();
+      updateHeader();
     },
   });
   minDate = $("#datepicker").datepicker("getDate");
