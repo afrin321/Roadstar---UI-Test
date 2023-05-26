@@ -5,8 +5,10 @@ var droppedElement = null;
 function dragStart(event) {
   console.log("dragStart");
   console.log(event.target.id);
-  draggableId = event.target.id;
-  droppedElement = event.target;
+  if (event.target.classList.contains("appointment-div")) {
+    draggableId = event.target.id;
+    droppedElement = event.target;
+  }
 }
 
 function droppedOn(event) {
