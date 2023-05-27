@@ -83,7 +83,7 @@ function getGridItemMain(i) {
   var date = getDateByIndexForItem(i);
 
   var id = `${cat}#${date}`;
-  return `<div ondrop=\"droppedOn(event)\" class=\"tdata grid-element maingrid\" id=\"${id}\"  ></div>`;
+  return `<div ontouchmove=\"touchMove(event)\" ondrop=\"droppedOn(event)\" class=\"tdata grid-element maingrid\" id=\"${id}\"  ></div>`;
 }
 
 // HTML for creating Calender Grid
@@ -167,7 +167,7 @@ function autoLoadAppointments() {
 function getAppointmentAutoLoad(id, type) {
   var classType = type ? type : "request";
   var apId = `ap#${id}`;
-  var appointmentDiv = `<div ondragover=\"dragOver(event)\"  ondragstart=\"dragStart(event)\" ondragend=\"onDragEnd(event)\" draggable=\"true\" class=\"draggable appointment-div ${classType}\" id=\"${apId}\">
+  var appointmentDiv = `<div ontouchstart=\"touchStart(event)\" ontouchend=\"touchEnd(event)\"  ondragover=\"dragOver(event)\"  ondragstart=\"dragStart(event)\" ondragend=\"onDragEnd(event)\" draggable=\"true\" class=\"draggable appointment-div ${classType}\" id=\"${apId}\">
     <div class=\"ap-div-c-1\">
         <div>
             <img src=\".\/image\/info.svg\" title=\"${classType}\" />

@@ -64,7 +64,7 @@ $(function () {
 
 function getAppointmentDiv(id) {
   var apId = `ap#${id}`;
-  var appointmentDiv = `<div ondragover=\"dragOver(event)\" ondragstart=\"dragStart(event)\" ondragend=\"onDragEnd(event)\" draggable=\"true\" class=\"draggable appointment-div  request\" id=\"${apId}\">
+  var appointmentDiv = `<div ontouchstart=\"touchStart(event)\" ontouchend=\"touchEnd(event)\" ondragover=\"dragOver(event)\" ondragstart=\"dragStart(event)\" ondragend=\"onDragEnd(event)\" draggable=\"true\" class=\"draggable appointment-div  request\" id=\"${apId}\">
     <div class=\"grab ap-div-c-1 \">
         <div>
             <img src=\".\/image\/info.svg\" />
