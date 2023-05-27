@@ -218,6 +218,7 @@
     padding-left: 13px;
     font-size: 12px;
     cursor: grab;
+    touch-action: none;
 }
 
 
